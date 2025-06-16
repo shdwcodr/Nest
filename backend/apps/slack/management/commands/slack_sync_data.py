@@ -95,7 +95,11 @@ class Command(BaseCommand):
                             )
                             conversation_data["num_members"] = None
 
-                    if (conversation := Conversation.update_data(conversation_data, workspace)):
+                    if (
+                        conversation := Conversation.update_data(
+                            conversation_data, workspace, save=False
+                        )
+                    ):
                         conversations.append(conversation)
 
                 total_channels += len(response["channels"])
